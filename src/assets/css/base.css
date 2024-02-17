@@ -26,7 +26,9 @@
   --destructive: 0 62.8% 30.6%;
   --ring: 240 4.9% 83.9%;
 }
-
+::selection {
+  background: #8884;
+}
 ::-webkit-scrollbar {
   width: .31rem;
   height: .5rem
