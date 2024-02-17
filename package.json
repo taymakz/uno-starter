@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "unocss ./src/**/*.{html,js} -o ./src/assets/css/app.css -w",
-    "build": "unocss ./src/**/*.{html,js} -o ./src/assets/css/app.css -m"
+    "dev": "unocss ./src/**/*.{html,js} -o ./src/assets/css/app.css -w --preflights",
+    "build": "unocss ./src/**/*.{html,js} -o ./src/assets/css/app.css --minify"
   },
   "keywords": [],
   "author": "",

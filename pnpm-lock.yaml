@@ -6,7 +6,7 @@ settings:
 
 devDependencies:
   '@iconify/json':
-    specifier: ^2.2.183
+    specifier: 2.2.183
     version: 2.2.183
   '@unocss/cli':
     specifier: ^0.58.5

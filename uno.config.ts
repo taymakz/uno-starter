@@ -11,15 +11,35 @@ import {
 
 export default defineConfig({
   shortcuts: [
-    { 'icon-btn': 'text-text/80 border cursor-pointer rounded-lg hover:bg-background flex items-center justify-center transition-all duration-200' }
-  ],
+    { 'icon-btn': 'text-text/80 border cursor-pointer rounded-lg hover:bg-background flex items-center justify-center transition-all duration-200' },
 
+  ],
+  safelist: ['animate-ripple'],
   rules: [
     [/^bg-dot-(.*)$/, ([, color]) => ({
       'background-image': `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'><circle fill='${color}' id='pattern-circle' cx='10' cy='10' r='1.6257413380501518'></circle></svg>")`
-    })]
+    })],
   ],
-  
+  preflights: [
+    {
+      getCSS: ({ theme }) => `
+   
+      @keyframes ripple{
+        50%{
+          transform: scale(var(--scale, 1.25))
+        }
+      }
+      .ripple{
+        --size: calc(var(--baseSize, 80px) + var(--sizeStep, 64px) * var(--i, 0));
+        width: var(--size);
+        height: var(--size);
+        opacity: calc(var(--baseOpacity, 0.25) - var(--opacityStep, 0.05) * var(--i, 0));
+        animation: ${theme.animation.ripple};
+      }
+      
+      `,
+    },
+  ],
   presets: [
     presetUno(),
     presetAttributify(),
@@ -82,28 +102,8 @@ export default defineConfig({
       md: 'calc(var(--radius) - 2px)',
       sm: 'calc(var(--radius) - 4px)',
     },
-
-    keyframes: {
-
-      'accordion-down': {
-        from: { height: 0 },
-        to: { height: 'var(--radix-accordion-content-height)' },
-      },
-      'accordion-up': {
-        from: { height: 'var(--radix-accordion-content-height)' },
-        to: { height: 0 },
-      },
-      'collapsible-down': {
-        from: { height: 0 },
-        to: { height: 'var(--radix-collapsible-content-height)' },
-      },
-      'collapsible-up': {
-        from: { height: 'var(--radix-collapsible-content-height)' },
-        to: { height: 0 },
-      },
-    },
-
     animation: {
+      'ripple': 'ripple var(--duration, 1.5s) ease calc(var(--i, 0) * 0.1s) infinite',
       'accordion-down': 'accordion-down 0.2s ease-out',
       'accordion-up': 'accordion-up 0.2s ease-out',
       'collapsible-down': 'collapsible-down 0.2s ease-in-out',
