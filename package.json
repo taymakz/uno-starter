@@ -1,15 +1,10 @@
 {
   "name": "uno-starter",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "unocss ./src/**/*.{html,js} -o ./src/assets/css/app.css -w --preflights",
     "build": "unocss ./src/**/*.{html,js} -o ./src/assets/css/app.css --minify"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@iconify/json": "2.2.183",
     "@unocss/cli": "^0.58.5",
