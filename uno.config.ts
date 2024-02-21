@@ -5,7 +5,6 @@ import {
   presetIcons,
   presetTypography,
   presetUno,
-  transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
 
@@ -55,7 +54,6 @@ export default defineConfig({
   ],
   transformers: [
     transformerDirectives(),
-    transformerVariantGroup(),
   ],
   theme: {
     screens: {
